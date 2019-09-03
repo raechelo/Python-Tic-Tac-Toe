@@ -29,7 +29,10 @@ def play_game():
     print("tie.")
 
 def handle_turn(player):
+  print(player + "'s turn")
   position = input("choose a position from 1-9: ")
+  while position not in ["1", "2","3","4","5","6","7","8","9"]:
+    position = input("invalid input. choose a position from 1-9: ")
   position = int(position) - 1
   board[position] = player
   display_board()
@@ -40,11 +43,8 @@ def check_if_game_over():
 
 def check_if_win():
   global winner
-  # check_rows()
   row_winner = check_rows()
-  # check_columns()
   column_winner = check_columns()
-  # check_diagonals()
   diagonal_winner = check_diagonals()
 
   if row_winner:
@@ -102,6 +102,10 @@ def check_columns():
   return
 
 def check_if_tie():
+  global game_still_going
+
+  if "-" not in board:
+    game_still_going = False
   return
 
 def change_player():
@@ -113,20 +117,3 @@ def change_player():
   return
 
 play_game()
-
-#  board
-
-# display
-
-# play game
-  # handle turn
-   
-# check win
-  # check rows
-  # check columns
-  # check diags
-
-# check tie
-
-# change player
-
